@@ -1,0 +1,5 @@
+# Session settings for run-bridge.sh. Copy to bridge.conf in your bridge folder (default ~/claude-bridge).
+# Read each time the script starts a new session. Change a value, then restart the bridge (see docs/2-always-on.md).
+MODEL=claude-opus-5-5
+# One of: low, medium, high, xhigh, max
+EFFORT=medium
