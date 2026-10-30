@@ -18,20 +18,30 @@ log() { print -r -- "$(date '+%Y-%m-%d %H:%M:%S') $*" >> "$LOG"; }
 # Values are validated; anything missing or invalid falls back to the defaults below.
 MODEL="claude-opus-5-5"
 EFFORT="medium"
+SESSION_RULES="on"
 CONF="$BRIDGE/bridge.conf"
 if [[ -r "$CONF" ]]; then
   conf_model="$(sed -n 's/^MODEL=//p' "$CONF" | tail -1 | tr -d '[:space:]')"
   conf_effort="$(sed -n 's/^EFFORT=//p' "$CONF" | tail -1 | tr -d '[:space:]')"
+  conf_rules="$(sed -n 's/^SESSION_RULES=//p' "$CONF" | tail -1 | tr -d '[:space:]')"
   [[ "$conf_model" =~ '^[A-Za-z0-9._-]+$' ]] && MODEL="$conf_model" || log "ignoring invalid MODEL in $CONF"
   [[ "$conf_effort" =~ '^(low|medium|high|xhigh|max)$' ]] && EFFORT="$conf_effort" || log "ignoring invalid EFFORT in $CONF"
+  [[ -z "$conf_rules" || "$conf_rules" =~ '^(on|off)$' ]] && SESSION_RULES="${conf_rules:-on}" || log "ignoring invalid SESSION_RULES in $CONF"
 fi
 # These env vars would override the flags; the bridge's model and effort come from bridge.conf only.
 unset ANTHROPIC_MODEL CLAUDE_CODE_EFFORT_LEVEL
 
+# Optional session rules (see session-rules.md.example): appended to the system prompt when the file exists
+# and SESSION_RULES is not off. Inlined text, single-quoted with (qq) so it survives the sh -c tmux runs it under;
+# --append-system-prompt-file may only work in print mode.
+RULES="$BRIDGE/session-rules.md"
+extra=""
+[[ $SESSION_RULES == on && -r "$RULES" ]] && extra="--append-system-prompt ${(qq)$(<$RULES)}"
+
 if ! tmux has-session -t "$SESSION" 2>/dev/null; then
-  log "starting $SESSION (model $MODEL, effort $EFFORT)"
+  log "starting $SESSION (model $MODEL, effort $EFFORT${extra:+, session rules on})"
   tmux new-session -d -s "$SESSION" -x 200 -y 50 -c "$WORKDIR" \
-    "claude --name claude-bridge --model $MODEL --effort $EFFORT --permission-mode auto --remote-control claude-bridge \
+    "claude --name claude-bridge --model $MODEL --effort $EFFORT --permission-mode auto --remote-control claude-bridge $extra \
       --dangerously-load-development-channels plugin:slack-bridge@matteoperona-plugins"
 
   # Claude Code shows a warning screen for development channels at every start. Confirm it only when the
