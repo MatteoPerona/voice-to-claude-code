@@ -3,3 +3,5 @@
 MODEL=claude-opus-5-5
 # One of: low, medium, high, xhigh, max
 EFFORT=medium
+# on or off. Appends session-rules.md (if present in the bridge folder) to the system prompt. Default on.
+SESSION_RULES=on

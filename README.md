@@ -38,6 +38,10 @@ More: [docs/architecture.md](docs/architecture.md).
 
 Edit `bridge.conf` (`MODEL=`, `EFFORT=`) and restart the session. See [docs/2-always-on.md](docs/2-always-on.md#switching-model-and-effort). Slash commands typed in Slack do not work.
 
+## 🧭 Session rules (optional)
+
+Copy `always-on/session-rules.md.example` to `~/claude-bridge/session-rules.md` to append extra instructions to the session's system prompt. The example makes the session a planner, not a doer: quick steps itself, longer work to background subagents so it stays responsive in Slack, outward-facing actions (push, publish, delete, send) never delegated. Edit the file to change the rules; delete it or set `SESSION_RULES=off` in `bridge.conf` to turn them off. Restart to apply. See [docs/2-always-on.md](docs/2-always-on.md#session-rules-optional).
+
 ## 🔒 Security
 
 Whoever can post as you in the channel can drive your session. Use a private channel, allowlist only Composio's app ID in `SLACK_OWNER_APPS`, and remember auto permission mode skips most prompts. Details: [docs/security.md](docs/security.md).

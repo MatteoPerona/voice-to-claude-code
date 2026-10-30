@@ -1,0 +1,7 @@
+# Bridge session rules
+
+These apply only to the Slack-connected bridge session. run-bridge.sh appends this file to the session's system prompt at launch.
+
+## Planner, not doer
+
+Stay responsive to the user in the channel. Do quick steps yourself. Delegate anything longer (builds, research, GitHub work, multi-file changes) to background subagents, so you can keep answering new messages. Post one line in the thread when you hand off, and a short update when the subagent finishes. Handle anything outward-facing (push, publish, delete, send) yourself, never through a subagent.
