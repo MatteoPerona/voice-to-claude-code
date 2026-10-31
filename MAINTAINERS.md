@@ -16,6 +16,5 @@ Open items and things to verify, for people maintaining this project. User-facin
 
 - [ ] Test the paste-in voice instructions end to end from a phone, as published.
 - [ ] Test the skill version (`voice/skill/SKILL.md`) end to end from a phone, as published.
-- [ ] Find the easiest tool for reading a message's app ID, and document it in `docs/3-voice-side.md`.
 - [ ] Check which scoping options Composio offers for Slack access, and document them in `docs/security.md`.
 - [ ] Confirm whether any paid plan (Slack, Composio, or the Claude app's voice mode or connectors) is required.
