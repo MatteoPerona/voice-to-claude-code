@@ -4,7 +4,7 @@ Open items and things to verify, for people maintaining this project. User-facin
 
 ## Mac side
 
-- [ ] Test the marketplace install (`/plugin marketplace add` + `/plugin install`) end to end on a fresh machine; so far the bridge has run from a local checkout through the MCP-config route.
+- [ ] Test the marketplace install (`/plugin marketplace add` + `/plugin install`) end to end on a fresh machine. The marketplace plugin is in daily use on an existing setup, but a from-scratch install hasn't been tried.
 - [ ] Confirm the minimum Claude Code version with channels support.
 
 ## Always on
