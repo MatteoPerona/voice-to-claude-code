@@ -50,6 +50,10 @@ If `session-rules.md` exists in the bridge folder, the script appends its text t
 
 Changes apply on the next restart. The log's "starting" line ends with `session rules on` when the file was loaded.
 
+## Permission prompts
+
+The script starts Claude Code with `--permission-mode auto`, so most routine actions run without a prompt. When a prompt does appear, the plugin posts it to the thread of the latest message: "Approval needed, code abcde", the tool, and a preview of its input. Reply `yes abcde` or `no abcde` (`y`/`n` also work; capitals and trailing punctuation from dictation are fine). Any other text is passed to the session as a normal message. See [security](security.md) before relying on auto mode.
+
 ## What a restart means
 
 - Restart is the only way model, effort and session-rules changes apply.
