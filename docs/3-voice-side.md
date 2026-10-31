@@ -15,7 +15,13 @@ Composio posts to Slack with your own Slack user, not a bot. A message therefore
 ## Find the app ID and allowlist it
 
 1. Post a test message from voice Claude in the bridge channel.
-2. Inspect that message's data (for example via Slack's message info or a Slack API tool) and look for an app ID field, usually alongside a bot ID. The exact field names depend on the tool you use; check the output. (Unverified here: which tool exposes it most easily.)
+2. On the Mac, list the channel's recent messages with the bridge's bot token (uses the env file from part 1):
+
+   ```
+   bun --env-file ~/.claude/channels/slack/.env -e 'const r = await fetch(`https://slack.com/api/conversations.history?channel=${process.env.SLACK_CHANNELS}&limit=10`, { headers: { Authorization: `Bearer ${process.env.SLACK_BOT_TOKEN}` } }).then((r) => r.json()); if (!r.ok) console.log(r.error); for (const m of r.messages ?? []) console.log(m.user, m.bot_id ?? "-", m.app_id ?? "-", (m.text ?? "").slice(0, 40))'
+   ```
+
+   Each line is user, bot ID, app ID, start of text. Find your test message: your member ID, a bot ID (`B...`), and an app ID (`A...`). The plugin checks the app ID, not the bot ID. Lines from the bridge's own replies show the bridge bot's user ID; don't allowlist that app.
 3. Put the value in `~/.claude/channels/slack/.env`:
 
    ```

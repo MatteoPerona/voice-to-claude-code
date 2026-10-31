@@ -12,12 +12,15 @@ This repo is documentation plus a runner script. The Slack channel plugin is a s
 
 ## 🧰 What you need
 
+**macOS only.** The always-on runner uses launchd, `caffeinate` and zsh, and expects Homebrew tools in `/opt/homebrew/bin` and logs in `~/Library/Logs`. (The Slack plugin itself has no macOS-specific code.)
+
 - A Mac that stays on, logged in and awake
-- [Bun](https://bun.sh), tmux
-- Claude Code with channels support
-- A Slack workspace you control
-- A Composio account
-- The Claude app with voice mode
+- [Bun](https://bun.sh): `brew install oven-sh/bun/bun`, or the installer from bun.sh (`curl -fsSL https://bun.sh/install | bash`)
+- tmux: `brew install tmux`
+- Claude Code with channels support, logged in with a claude.ai account. Channels also accept a Console API key, but the runner's `--remote-control` needs a claude.ai plan (Pro, Max, Ultra, Team or Enterprise); on Team and Enterprise an Owner must enable channels and Remote Control. Minimum Claude Code version: TODO: verify.
+- A Slack workspace where you can create and install apps
+- A Composio account with your Slack workspace connected, available to the Claude app as a connector
+- The Claude app on your phone, with voice mode
 
 ## 🚀 Quick start
 
@@ -53,7 +56,8 @@ Whoever can post as you in the channel can drive your session. Use a private cha
 - Messages sent during a restart are lost; each restart is a fresh conversation.
 - Channels are a research preview and need `--dangerously-load-development-channels`.
 - The Mac must stay awake and logged in.
-- Marketplace plugin install and the voice instructions as published here are not yet tested end to end by the author.
+- The author's always-on bridge runs the plugin installed from the `matteoperona-plugins` marketplace daily, but a from-scratch install on a fresh machine has not been tested yet.
+- The voice instructions as published here are not yet tested end to end by the author.
 
 See [docs/troubleshooting.md](docs/troubleshooting.md).
 
