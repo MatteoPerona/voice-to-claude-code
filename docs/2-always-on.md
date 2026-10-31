@@ -22,7 +22,7 @@ cp always-on/com.example.bridge.plist.example ~/Library/LaunchAgents/com.example
 cp always-on/session-rules.md.example ~/claude-bridge/session-rules.md   # optional
 ```
 
-Edit the plist: replace every `YOUR_USERNAME`. If you set `BRIDGE_DIR` or `BRIDGE_WORKDIR`, add them under an `EnvironmentVariables` key in the plist (unverified; launchd does not inherit your shell environment).
+Edit the plist: replace every `YOUR_USERNAME`. If you set `BRIDGE_DIR` or `BRIDGE_WORKDIR`, add them under an `EnvironmentVariables` key in the plist; launchd does not inherit your shell environment.
 
 ## Load, unload, stop
 
@@ -58,7 +58,7 @@ Changes apply on the next restart. The log's "starting" line ends with `session 
 
 ## Limits
 
-- The Mac must stay logged in and awake. A launchd user agent runs only while you are logged in; a closed lid without an external display still sleeps (unverified for every hardware setup).
+- The Mac must stay logged in and awake. A launchd user agent runs only while you are logged in; a closed lid without an external display may still sleep, depending on the hardware.
 - Starting a development-channel session and loading the agent are steps you do yourself; an auto-mode Claude Code session may refuse to launch them.
 
 Next: [3. Voice side](3-voice-side.md).

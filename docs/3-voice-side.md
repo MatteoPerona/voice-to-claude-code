@@ -6,7 +6,7 @@ Goal: voice-mode Claude in the Claude app can post to and read your bridge chann
 
 1. Create a Composio account and connect your Slack workspace in Composio. Follow Composio's current prompts; the screens change and are not reproduced here.
 2. Make Composio available to the Claude app as a connector, following the Claude app's and Composio's current instructions.
-3. Check that Claude, in voice mode, can read and post in your bridge channel. (The author verified read and post in voice mode on 2026-10-29.)
+3. Check that Claude, in voice mode, can read and post in your bridge channel.
 
 ## Why the posts arrive as you
 
@@ -15,7 +15,7 @@ Composio posts to Slack with your own Slack user, not a bot. A message therefore
 ## Find the app ID and allowlist it
 
 1. Post a test message from voice Claude in the bridge channel.
-2. Inspect that message's data (for example via Slack's message info or a Slack API tool) and look for an app ID field, usually alongside a bot ID. The exact field names depend on the tool you use; check the output. (Unverified here: which tool exposes it most easily.)
+2. Inspect that message's data (for example via Slack's message info or a Slack API tool) and look for an app ID field, usually alongside a bot ID. The exact field names depend on the tool you use; check the output. The [plugin README](https://github.com/MatteoPerona/claude-slack-bridge#finding-the-ids) has a command that lists recent messages with their app IDs.
 3. Put the value in `~/.claude/channels/slack/.env`:
 
    ```
@@ -32,7 +32,7 @@ Two options; both say the same thing.
 - **Paste-in:** copy the block in [`voice/voice-claude-instructions.md`](../voice/voice-claude-instructions.md) into the Claude app where it applies to your voice chats (profile preferences or project instructions; check the app's current settings for where). Replace `#your-bridge-channel`.
 - **Skill:** [`voice/skill/SKILL.md`](../voice/skill/SKILL.md) packages the same text as a skill. The Claude app supports uploaded skills, but the upload steps and menu names change; check the app's current UI and help pages rather than relying on this repo. Replace the channel name before uploading.
 
-Neither has been tested by the author from a phone as published here (unverified); test once and adjust the wording.
+After installing, send one test request from your phone and adjust the wording if voice Claude does not follow it.
 
 ## How to talk to it
 
