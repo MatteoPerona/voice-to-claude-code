@@ -56,8 +56,6 @@ Whoever can post as you in the channel can drive your session. Use a private cha
 - Messages sent during a restart are lost; each restart is a fresh conversation.
 - Channels are a research preview and need `--dangerously-load-development-channels`.
 - The Mac must stay awake and logged in.
-- The author's always-on bridge runs the plugin installed from the `matteoperona-plugins` marketplace daily, but a from-scratch install on a fresh machine has not been tested yet.
-- The voice instructions as published here are not yet tested end to end by the author.
 
 See [docs/troubleshooting.md](docs/troubleshooting.md).
 
@@ -70,3 +68,5 @@ See [docs/troubleshooting.md](docs/troubleshooting.md).
 ## 📄 License
 
 [Apache-2.0](LICENSE)
+
+Open items for maintainers: [MAINTAINERS.md](MAINTAINERS.md).

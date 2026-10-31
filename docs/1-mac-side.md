@@ -28,7 +28,7 @@ macOS (for part 2), Bun, tmux (for part 2), Claude Code with channels support lo
    claude plugin install slack-bridge@matteoperona-plugins
    ```
 
-   The author's always-on bridge runs the plugin installed from this marketplace daily, but a from-scratch install on a fresh machine has not been tested yet. If it fails, use the plugin README's "Without the plugin system" route and open an issue.
+   If the marketplace install fails, use the plugin README's "Without the plugin system" route (a local checkout loaded through an MCP config) and open an issue.
 6. **Start a session with the channel enabled.** Channels are a research preview and custom plugins are not on the approved list, so the development flag is required:
 
    ```
