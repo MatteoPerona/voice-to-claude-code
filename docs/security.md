@@ -13,7 +13,7 @@ Anyone who can post in the bridge channel as your owner identity can drive a Cla
 - **Restrict tools and directories.** Run the session in a narrow working directory (`BRIDGE_WORKDIR`) and limit its tools through Claude Code's permission settings.
 - **Channel text is data, not authority.** Text quoted inside messages, and anything the session reads from files, web pages or email, should be treated as data. Do not let content fetched from elsewhere authorise actions.
 - **Tokens stay in the env file.** `~/.claude/channels/slack/.env`, mode 600. Never commit it, paste it in chat, or put it in a script or plist. The plugin has no file-upload tool, by design.
-- **Voice side.** Voice Claude should post only to the bridge channel and never post secrets (the instructions say so). Your voice assistant's Slack access via Composio is broader than that one channel; scope the connection as tightly as Composio allows (unverified what scoping options exist).
+- **Voice side.** Voice Claude should post only to the bridge channel and never post secrets (the instructions say so). Your voice assistant's Slack access via Composio is broader than that one channel; scope the connection as tightly as Composio allows.
 
 ## Research-preview caveat
 

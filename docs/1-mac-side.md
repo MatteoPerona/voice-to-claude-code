@@ -19,7 +19,7 @@ Bun, tmux (for part 2), Claude Code with channels support, a Slack workspace you
    /plugin install slack-bridge@matteoperona-plugins
    ```
 
-   **Not tested end to end by the author yet.** The author ran the bridge from a local checkout through the plugin's MCP-config route. The marketplace install above follows the plugin README but has not been verified start to finish. If it fails, use the plugin README's "Without the plugin system" route and open an issue.
+   If the marketplace install fails, use the plugin README's "Without the plugin system" route (a local checkout loaded through an MCP config) and open an issue.
 6. **Start a session with the channel enabled.** Channels are a research preview and custom plugins are not on the approved list, so the development flag is required:
 
    ```

@@ -1,6 +1,6 @@
 # Troubleshooting
 
-- **Slash commands do nothing.** `/model`, `/effort` typed in the channel arrive as plain text and are not run. Tested by the author on 2026-10-29: a message reached the session as a normal channel message. Change model and effort in `bridge.conf` and restart ([2-always-on](2-always-on.md#switching-model-and-effort)).
+- **Slash commands do nothing.** `/model`, `/effort` typed in the channel arrive as plain text and are not run. A slash command reaches the session as a normal channel message. Change model and effort in `bridge.conf` and restart ([2-always-on](2-always-on.md#switching-model-and-effort)).
 - **Two sessions, one goes silent.** Slack hands each event to one open connection, so the plugin keeps a single-instance lock: the newest session wins; the older one stays alive but silent (its `reply` errors). Kill the one you do not want, or the stale tmux session.
 - **A message got no answer after a restart.** Messages sent during a restart are lost. Re-send. Each restart is also a fresh conversation.
 - **Session never starts answering.** Claude Code shows a development-channels warning screen at each start. The script confirms it only when the "local development" option is highlighted. If it is stuck on another screen: `tmux attach -t claude-bridge`, handle it, detach with Ctrl-b d. Check `~/Library/Logs/claude-bridge.log`.
