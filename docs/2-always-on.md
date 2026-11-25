@@ -4,7 +4,7 @@ Goal: the bridge session starts at login, restarts if it exits, and the Mac stay
 
 ## Pieces
 
-- [`always-on/run-bridge.sh`](../always-on/run-bridge.sh) starts Claude Code in a detached tmux session named `claude-bridge` (auto permission mode, Remote Control on, the plugin loaded with `--dangerously-load-development-channels plugin:slack-bridge@matteoperona-plugins`). It confirms the development-channels warning screen only when the "local development" option is highlighted, then holds `caffeinate -i -s` until the session ends.
+- [`always-on/run-bridge.sh`](../always-on/run-bridge.sh) starts Claude Code in a detached tmux session named `claude-bridge` (auto permission mode, Remote Control on, the plugin loaded with `--dangerously-load-development-channels plugin:slack-bridge@matteoperona-plugins`). It sets `SLACK_BRIDGE_TAKEOVER=1` for that session, so the bridge takes the Slack connection even if another session holds it; sessions started any other way leave a live bridge alone. It confirms the development-channels warning screen only when the "local development" option is highlighted, then holds `caffeinate -i -s` until the session ends.
 - [`always-on/com.example.bridge.plist.example`](../always-on/com.example.bridge.plist.example) is a launchd agent (label `com.example.bridge`) that runs the script at login and restarts it at most once a minute.
 - [`always-on/bridge.conf.example`](../always-on/bridge.conf.example) sets `MODEL`, `EFFORT` and `SESSION_RULES`.
 - [`always-on/session-rules.md.example`](../always-on/session-rules.md.example) is optional extra instructions for the bridge session (see [Session rules](#session-rules-optional)).
