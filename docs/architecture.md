@@ -22,4 +22,4 @@ Claude Code's native permission relay sends a pending approval to the channel wi
 
 ## Single instance
 
-Slack delivers each event to only one open connection, so the plugin keeps a lock; the newest session takes over.
+Slack delivers each event to only one open connection, so the plugin keeps a lock. A session that starts while a live one holds the lock stays off Slack. Only the always-on runner takes over, by starting its session with `SLACK_BRIDGE_TAKEOVER=1` (plugin 0.1.1 and later).

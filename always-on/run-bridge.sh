@@ -40,8 +40,10 @@ extra=""
 
 if ! tmux has-session -t "$SESSION" 2>/dev/null; then
   log "starting $SESSION (model $MODEL, effort $EFFORT${extra:+, session rules on})"
+  # SLACK_BRIDGE_TAKEOVER=1: the plugin leaves Slack alone when a live session already holds it; only this
+  # launcher takes over. Set in the command string, because a running tmux server may hold a stale environment.
   tmux new-session -d -s "$SESSION" -x 200 -y 50 -c "$WORKDIR" \
-    "claude --name claude-bridge --model $MODEL --effort $EFFORT --permission-mode auto --remote-control claude-bridge $extra \
+    "SLACK_BRIDGE_TAKEOVER=1 claude --name claude-bridge --model $MODEL --effort $EFFORT --permission-mode auto --remote-control claude-bridge $extra \
       --dangerously-load-development-channels plugin:slack-bridge@matteoperona-plugins"
 
   # Claude Code shows a warning screen for development channels at every start. Confirm it only when the

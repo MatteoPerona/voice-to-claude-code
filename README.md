@@ -52,7 +52,7 @@ Whoever can post as you in the channel can drive your session. Use a private cha
 ## ⚠️ Known limits
 
 - Slash commands arrive as plain text and are not run.
-- One bridge at a time; the newest session wins.
+- One bridge at a time: the always-on session holds Slack, and other sessions that load the plugin stay off it.
 - Messages sent during a restart are lost; each restart is a fresh conversation.
 - Channels are a research preview and need `--dangerously-load-development-channels`.
 - The Mac must stay awake and logged in.
